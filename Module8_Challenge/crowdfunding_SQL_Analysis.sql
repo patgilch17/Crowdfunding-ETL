@@ -8,14 +8,24 @@ order by backers_count desc;
 
 -- 2. (2.5 pts)
 -- Using the "backers" table confirm the results in the first query.
+
+
+select cf_id, count(backer_id) as backers_count
+from backers
+group by cf_id
+order by backers_count desc;
+
+/*
+--Made a mistake and just joined backers on campaign to check my work.
+
 select c.cf_id,c.backers_count, count(b.backer_id) as "Count_of_Backers"
 from campaign as c
-left join backers as b
+inner join backers as b
 on c.cf_id = b.cf_id
 where c.outcome = 'live'
 group by c.cf_id
 order by "Count_of_Backers" Desc;
-
+*/
 
 -- 3. (5 pts)
 -- Create a table that has the first and last name, and email address of each contact.
